@@ -1,0 +1,30 @@
+# kubectl apply -f service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-moderator-fe
+  namespace: luis
+spec:
+  type: NodePort
+  ports:
+  - port: 30001
+    targetPort: 4200
+    nodePort: 30001
+  selector:
+    app: content-moderator-fe
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-moderator-be
+  namespace: luis
+spec:
+  type: NodePort
+  ports:
+  - port: 30002
+    targetPort: 8080
+    nodePort: 30002
+  selector:
+    app: content-moderator-be
