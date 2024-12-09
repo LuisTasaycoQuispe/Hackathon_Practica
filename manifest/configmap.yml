@@ -1,8 +1,0 @@
-#kubectl apply -f configmap.yml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-  namespace: luis
-data:
-  API_BACKEND: "https://fuzzy-telegram-6jgr9qvgg9gfrpw7-8080.app.github.dev/"

@@ -1,4 +1,0 @@
-
-- kubectl logs content-moderator-fe-9f8fdbc75-tbw2c -n luis
-
-

@@ -1,0 +1,35 @@
+ kubectl delete namespace luis-tasayco-namespace
+
+-- PARA EL BACKEND
+
+kubectl apply -f luis-tasayco-namespace.yml
+kubectl apply -f backend-luis-tasayco-deployment.yml
+kubectl apply -f luis-tasayco-configmap.yml
+kubectl apply -f backend-luis-tasayco-service.yml
+kubectl apply -f backend-luis-tasayco-hpa.yml
+
+kubectl get all -n luis-tasayco-namespace
+
+kubectl port-forward service/backend-luis-tasayco-deployment 8080:8080 -n luis-tasayco-namespace
+
+
+
+-- PARA EL FRONTEND
+
+
+kubectl apply -f luis-tasayco-namespace.yml
+kubectl apply -f frontend-luis-tasayco-deployment.yml
+kubectl apply -f luis-tasayco-configmap.yml
+kubectl apply -f frontend-luis-tasayco-service.yml
+kubectl apply -f frontend-luis-tasayco-hpa.yml
+
+kubectl get all -n luis-tasayco-namespace
+
+kubectl port-forward service/frontend-luis-tasayco-deployment 4200:4200 -n luis-tasayco-namespace
+
+
+
+
+--
+
+kubectl get configmap luis-tasayco-configmap -o yaml -n luis-tasayco-namespace
